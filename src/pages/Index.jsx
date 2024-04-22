@@ -1,6 +1,6 @@
 // Real Estate Listing Page Component using Chakra UI and react-icons
-import React from 'react';
-import { Box, Flex, Heading, Image, Text, Button, SimpleGrid, Icon, Input, FormControl, FormLabel, useDisclosure, IconButton } from "@chakra-ui/react";
+import React from "react";
+import { Box, Flex, Heading, Image, Text, Button, SimpleGrid, Icon, Input, FormControl, FormLabel, useDisclosure, IconButton, Select } from "@chakra-ui/react";
 import { FaArrowAltCircleLeft, FaArrowAltCircleRight } from "react-icons/fa";
 import { FaBath, FaBed, FaCar, FaHeart } from "react-icons/fa";
 
@@ -124,7 +124,13 @@ const PropertyFilter = () => {
           </Box>
           <Box>
             <FormLabel>Bedrooms</FormLabel>
-            <Input placeholder="Number of bedrooms" />
+            <Select placeholder="Select bedrooms" multiple>
+              <option value="1">1</option>
+              <option value="2">2</option>
+              <option value="3">3</option>
+              <option value="4">4</option>
+              <option value="5">5+</option>
+            </Select>
           </Box>
           <Box>
             <FormLabel>Bathrooms</FormLabel>
