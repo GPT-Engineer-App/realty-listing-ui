@@ -36,12 +36,6 @@ const Index = () => {
             <Image src={property.imageUrl} alt={`Image of ${property.address}`} />
 
             <Box p={6}>
-              <Box d="flex" alignItems="baseline">
-                <Button size="sm" colorScheme="pink" variant="solid" leftIcon={<Icon as={FaHeart} />}>
-                  Favorite
-                </Button>
-              </Box>
-
               <Heading fontSize="xl" mt={2} fontWeight="semibold" lineHeight="short">
                 {property.address}
               </Heading>
