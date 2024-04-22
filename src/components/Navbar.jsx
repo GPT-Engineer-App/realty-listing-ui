@@ -14,6 +14,9 @@ const Navbar = () => {
         <Link as={RouterLink} to="/login" px={2}>
           Login
         </Link>
+        <Link as={RouterLink} to="/add-property" px={2}>
+          Add Property
+        </Link>
         <Spacer />
       </Flex>
     </Box>

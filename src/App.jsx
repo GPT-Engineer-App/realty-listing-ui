@@ -3,6 +3,7 @@ import Index from "./pages/Index.jsx";
 import Navbar from "./components/Navbar";
 import SignUp from "./pages/SignUp";
 import Login from "./pages/Login";
+import AddProperty from "./pages/AddProperty";
 
 function App() {
   return (
@@ -12,6 +13,7 @@ function App() {
         <Route exact path="/" element={<Index />} />
         <Route path="/signup" element={<SignUp />} />
         <Route path="/login" element={<Login />} />
+        <Route path="/add-property" element={<AddProperty />} />
       </Routes>
     </Router>
   );
