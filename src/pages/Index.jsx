@@ -1,5 +1,5 @@
 // Real Estate Listing Page Component using Chakra UI and react-icons
-import { Box, Flex, Heading, Image, Text, Button, SimpleGrid, Icon } from "@chakra-ui/react";
+import { Box, Flex, Heading, Image, Text, Button, SimpleGrid, Icon, Input, FormControl, FormLabel } from "@chakra-ui/react";
 import { FaBath, FaBed, FaCar, FaHeart } from "react-icons/fa";
 
 const Index = () => {
@@ -33,7 +33,8 @@ const Index = () => {
 
   return (
     <Box p={5}>
-      <Heading mb={6}>Real Estate Listings</Heading>
+      <Heading mb={4}>Real Estate Listings</Heading>
+      <PropertyFilter />
       <SimpleGrid columns={{ base: 1, md: 2, lg: 3 }} spacing={10}>
         {properties.map((property) => (
           <Box key={property.id} borderWidth="1px" borderRadius="lg" overflow="hidden">
@@ -75,6 +76,45 @@ const Index = () => {
           </Box>
         ))}
       </SimpleGrid>
+    </Box>
+  );
+};
+
+const PropertyFilter = () => {
+  return (
+    <Box mb={6}>
+      <FormControl>
+        <SimpleGrid columns={{ base: 1, md: 3 }} spacing={4}>
+          <Box>
+            <FormLabel>Address</FormLabel>
+            <Input placeholder="Search by address" />
+          </Box>
+          <Box>
+            <FormLabel>City</FormLabel>
+            <Input placeholder="Search by city" />
+          </Box>
+          <Box>
+            <FormLabel>Country</FormLabel>
+            <Input placeholder="Search by country" />
+          </Box>
+          <Box>
+            <FormLabel>Bedrooms</FormLabel>
+            <Input placeholder="Number of bedrooms" />
+          </Box>
+          <Box>
+            <FormLabel>Bathrooms</FormLabel>
+            <Input placeholder="Number of bathrooms" />
+          </Box>
+          <Box>
+            <FormLabel>Car Spaces</FormLabel>
+            <Input placeholder="Number of car spaces" />
+          </Box>
+          <Box>
+            <FormLabel>Price</FormLabel>
+            <Input placeholder="Search by price" />
+          </Box>
+        </SimpleGrid>
+      </FormControl>
     </Box>
   );
 };
