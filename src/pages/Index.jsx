@@ -8,6 +8,8 @@ const Index = () => {
       id: 1,
       imageUrl: "https://images.unsplash.com/photo-1613490493576-7fde63acd811?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w1MDcxMzJ8MHwxfHNlYXJjaHwxfHxtb2Rlcm4lMjBob3VzZXxlbnwwfHx8fDE3MTM3NDYwMzZ8MA&ixlib=rb-4.0.3&q=80&w=1080",
       address: "1234 Fancy Estate, Big City",
+      city: "Big City",
+      country: "USA",
       description: "Beautiful and modern home with a spectacular city view.",
       bedrooms: 4,
       bathrooms: 3,
@@ -18,6 +20,8 @@ const Index = () => {
       id: 2,
       imageUrl: "https://images.unsplash.com/photo-1613977257592-4871e5fcd7c4?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w1MDcxMzJ8MHwxfHNlYXJjaHwxfHxsdXh1cnklMjB2aWxsYXxlbnwwfHx8fDE3MTM3NDYwMzd8MA&ixlib=rb-4.0.3&q=80&w=1080",
       address: "4321 Luxury Blvd, Rich Town",
+      city: "Rich Town",
+      country: "USA",
       description: "A luxurious villa with private pool and landscaped gardens.",
       bedrooms: 5,
       bathrooms: 4,
@@ -36,9 +40,14 @@ const Index = () => {
             <Image src={property.imageUrl} alt={`Image of ${property.address}`} />
 
             <Box p={6}>
-              <Heading fontSize="xl" mt={2} fontWeight="semibold" lineHeight="short">
-                {property.address}
-              </Heading>
+              <Box>
+                <Heading fontSize="xl" mt={2} fontWeight="semibold" lineHeight="short">
+                  {property.address}
+                </Heading>
+                <Text fontSize="md" color="gray.500">
+                  {property.city}, {property.country}
+                </Text>
+              </Box>
 
               <Text mt={2} color="gray.600">
                 {property.description}
