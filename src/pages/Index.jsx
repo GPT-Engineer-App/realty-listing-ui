@@ -1,12 +1,13 @@
 // Real Estate Listing Page Component using Chakra UI and react-icons
 import { Box, Flex, Heading, Image, Text, Button, SimpleGrid, Icon, Input, FormControl, FormLabel } from "@chakra-ui/react";
+import { useState } from "react";
 import { FaBath, FaBed, FaCar, FaHeart } from "react-icons/fa";
 
 const Index = () => {
   const properties = [
     {
       id: 1,
-      imageUrl: "https://images.unsplash.com/photo-1613490493576-7fde63acd811?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w1MDcxMzJ8MHwxfHNlYXJjaHwxfHxtb2Rlcm4lMjBob3VzZXxlbnwwfHx8fDE3MTM3NDYwMzZ8MA&ixlib=rb-4.0.3&q=80&w=1080",
+      imageUrls: ["https://images.unsplash.com/photo-1613490493576-7fde63acd811?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w1MDcxMzJ8MHwxfHNlYXJjaHwxfHxtb2Rlcm4lMjBob3VzZXxlbnwwfHx8fDE3MTM3NDYwMzZ8MA&ixlib=rb-4.0.3&q=80&w=1080", "https://images.unsplash.com/photo-1613490493576-7fde63acd811?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w1MDcxMzJ8MHwxfHNlYXJjaHwxfHxtb2Rlcm4lMjBob3VzZXxlbnwwfHx8fDE3MTM3NDYwMzZ8MA&ixlib=rb-4.0.3&q=80&w=1080", "https://images.unsplash.com/photo-1613490493576-7fde63acd811?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w1MDcxMzJ8MHwxfHNlYXJjaHwxfHxtb2Rlcm4lMjBob3VzZXxlbnwwfHx8fDE3MTM3NDYwMzZ8MA&ixlib=rb-4.0.3&q=80&w=1080"],
       address: "1234 Fancy Estate, Big City",
       city: "Big City",
       country: "USA",
@@ -31,6 +32,15 @@ const Index = () => {
     // Add more properties as needed
   ];
 
+  const [currentImageIndex, setCurrentImageIndex] = useState({});
+
+  const handleImageChange = (id, direction) => {
+    setCurrentImageIndex((prevIndices) => ({
+      ...prevIndices,
+      [id]: direction === "next" ? (prevIndices[id] + 1) % properties.find((p) => p.id === id).imageUrls.length : (prevIndices[id] - 1 + properties.find((p) => p.id === id).imageUrls.length) % properties.find((p) => p.id === id).imageUrls.length,
+    }));
+  };
+
   return (
     <Box p={5}>
       <Heading mb={4}>Real Estate Listings</Heading>
@@ -38,7 +48,9 @@ const Index = () => {
       <SimpleGrid columns={{ base: 1, md: 2, lg: 3 }} spacing={10}>
         {properties.map((property) => (
           <Box key={property.id} borderWidth="1px" borderRadius="lg" overflow="hidden">
-            <Image src={property.imageUrl} alt={`Image of ${property.address}`} />
+            <Button onClick={() => handleImageChange(property.id, "prev")}>&lt;</Button>
+            <Image src={property.imageUrls[currentImageIndex[property.id] || 0]} alt={`Image of ${property.address}`} />
+            <Button onClick={() => handleImageChange(property.id, "next")}>&gt;</Button>
 
             <Box p={6}>
               <Box>
