@@ -1,5 +1,7 @@
 // Real Estate Listing Page Component using Chakra UI and react-icons
-import { Box, Flex, Heading, Image, Text, Button, SimpleGrid, Icon, Input, FormControl, FormLabel } from "@chakra-ui/react";
+import React from 'react';
+import { Box, Flex, Heading, Image, Text, Button, SimpleGrid, Icon, Input, FormControl, FormLabel, useDisclosure, IconButton } from "@chakra-ui/react";
+import { FaArrowAltCircleLeft, FaArrowAltCircleRight } from "react-icons/fa";
 import { FaBath, FaBed, FaCar, FaHeart } from "react-icons/fa";
 
 const Index = () => {
@@ -33,6 +35,7 @@ const Index = () => {
 
   return (
     <Box p={5}>
+      <ImageSlider />
       <Heading mb={4}>Real Estate Listings</Heading>
       <PropertyFilter />
       <SimpleGrid columns={{ base: 1, md: 2, lg: 3 }} spacing={10}>
@@ -76,6 +79,28 @@ const Index = () => {
           </Box>
         ))}
       </SimpleGrid>
+    </Box>
+  );
+};
+
+const ImageSlider = () => {
+  const { isOpen, onOpen, onClose } = useDisclosure();
+  const slides = ["https://images.unsplash.com/photo-1502672260266-1c1ef2d93688", "https://images.unsplash.com/photo-1444418776041-9c7e33cc5a9c", "https://images.unsplash.com/photo-1536376072261-38c75010e6c9"];
+  const [currentSlide, setCurrentSlide] = React.useState(0);
+
+  const nextSlide = () => {
+    setCurrentSlide((prev) => (prev + 1) % slides.length);
+  };
+
+  const prevSlide = () => {
+    setCurrentSlide((prev) => (prev === 0 ? slides.length - 1 : prev - 1));
+  };
+
+  return (
+    <Box position="relative" width="full" height="500px" mb={6}>
+      <IconButton aria-label="Previous slide" icon={<FaArrowAltCircleLeft />} position="absolute" left="10px" top="50%" transform="translateY(-50%)" onClick={prevSlide} />
+      <Image src={slides[currentSlide]} fit="cover" width="full" height="full" />
+      <IconButton aria-label="Next slide" icon={<FaArrowAltCircleRight />} position="absolute" right="10px" top="50%" transform="translateY(-50%)" onClick={nextSlide} />
     </Box>
   );
 };
