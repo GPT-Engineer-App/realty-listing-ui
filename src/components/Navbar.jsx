@@ -8,6 +8,12 @@ const Navbar = () => {
         <Link as={RouterLink} to="/" px={2}>
           Home
         </Link>
+        <Link as={RouterLink} to="/signup" px={2}>
+          Sign Up
+        </Link>
+        <Link as={RouterLink} to="/login" px={2}>
+          Login
+        </Link>
         <Spacer />
       </Flex>
     </Box>
